@@ -4,6 +4,7 @@
 #include <QtDBus/QDBusMessage>
 #include <QtDBus/QDBusConnection>
 #include <QtCore/QFileInfo>
+#include <QtCore/QVersionNumber>
 #include "exceptions/RuntimeException.h"
 
 enum KdeGlobalsChangeType {
@@ -46,7 +47,7 @@ QString colorSchemeFileGetName(const QString &filename) {
 }
 
 bool isOlderThanPlasma518(const QString &version) {
-    return QString::compare("5.18", version) > 0;
+    return QVersionNumber(5, 18) > QVersionNumber::fromString(version);
 }
 
 void assertListHasOneOrTwoItems(const QStringList &list, const QString &listName) {
